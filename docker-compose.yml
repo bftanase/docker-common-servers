@@ -100,9 +100,19 @@ services:
       links:
         - redis:redis
       ports:
-        - "6300:8081"
+        - "6300:6300"
       networks:
         - backend
+
+### MongoDB ##############################################
+    mongo:
+      build: ./mongo
+      ports:
+        - "27017:27017"
+      volumes:
+        - mongo:/data/db
+      networks:
+        - backend        
 
 networks:
   backend:
@@ -119,4 +129,6 @@ volumes:
   redis:
     driver: "local"
   phpmyadmin:
+    driver: "local"
+  mongo:
     driver: "local"
