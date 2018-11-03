@@ -55,6 +55,8 @@ services:
 
     pgadmin:
       build: ./pgadmin      
+      volumes:
+        - ${DATA_SAVE_PATH}/pgadmin:/root
       ports:
         - "5050:5050"
       environment:        
