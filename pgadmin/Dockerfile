@@ -1,4 +1,4 @@
-FROM fenglc/pgadmin4
+FROM dpage/pgadmin4
 
 MAINTAINER Bo-Yi Wu <appleboy.tw@gmail.com>
 

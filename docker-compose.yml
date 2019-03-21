@@ -26,7 +26,7 @@ services:
     postgres:
       build: ./postgres
       volumes:
-        - ${DATA_SAVE_PATH}/postgres:/var/lib/postgresql/data
+        - ${DATA_SAVE_PATH}/postgres:/var/lib/postgresql
       ports:
         - "${POSTGRES_PORT}:5432"
       environment:
@@ -41,7 +41,7 @@ services:
     postgres-postgis:
       build: ./postgres-postgis
       volumes:
-        - ${DATA_SAVE_PATH}/postgres:/var/lib/postgresql/data
+        - ${DATA_SAVE_PATH}/postgres:/var/lib/postgresql
       ports:
         - "${POSTGRES_PORT}:5432"
       environment:
@@ -58,10 +58,10 @@ services:
       volumes:
         - ${DATA_SAVE_PATH}/pgadmin:/root
       ports:
-        - "5050:5050"
+        - "5050:80"
       environment:        
-        - DEFAULT_USER=${PG_ADM_USER}
-        - DEFAULT_PASSWORD=${PG_ADM_PASSWORD}
+        - PGADMIN_DEFAULT_EMAIL=${PG_ADM_USER}
+        - PGADMIN_DEFAULT_PASSWORD=${PG_ADM_PASSWORD}
       depends_on:
         - postgres
       networks:        
